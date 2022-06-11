@@ -24,7 +24,8 @@ void FillArray(string[] arrayEnter, int Length)
 {
     for (int i = 0; i < Length; i++)
     {
-        arrayEnter[i] = System.Convert.ToString(new Random().Next(1, 1000));
+        int arg = new Random().Next(1, 100);
+        arrayEnter[i] = System.Convert.ToString(arg);
     }
 }
 
@@ -33,11 +34,14 @@ string[] FilterArray(string[] arrayIn, int Length)
     string[] arrayOut = new string[Length];
     for (int i = 0; i < Length; i++)
     {
-        if (arrayIn[i].Length < 2)
+        if (arrayIn[i].Length < 4)
         {
             arrayOut[i] = arrayIn[i];
         }
-        else arrayOut[i] = "0";
+        else
+        {
+            arrayOut[i] = "0";
+        }
     }
     return arrayOut;
 }
@@ -51,11 +55,11 @@ string PrintArrayIf(string[] printarray, int Length)
         if (printarray[i] != "0")
         {
             print += $"{printarray[i]} ";
-        }
-        if (i == count)
-        {
-            print += System.Environment.NewLine;
-            count += 3;
+            if (i == count)
+            {
+                print += System.Environment.NewLine;
+                count += 3;
+            }
         }
     }
     return print;
@@ -69,7 +73,11 @@ void Main()
     string[] array = new string[size];
     FillArray(array, size);
 
-    
+    if (size > 3)
+    {
+        array[0] = "who";
+        array[3] = "what";
+    }
 
     System.Console.WriteLine(PrintArrayIf(FilterArray(array, size), size));
 }
