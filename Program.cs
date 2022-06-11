@@ -20,6 +20,28 @@
     return value;
 }
 
+void FillArray(string[] arrayEnter, int Length)
+{
+    for (int i = 0; i < Length; i++)
+    {
+        arrayEnter[i] = System.Convert.ToString(new Random().Next(1, 1000));
+    }
+}
+
+string[] FilterArray(string[] arrayIn, int Length)
+{
+    string[] arrayOut = new string[Length];
+    for (int i = 0; i < Length; i++)
+    {
+        if (arrayIn[i].Length < 2)
+        {
+            arrayOut[i] = arrayIn[i];
+        }
+        else arrayOut[i] = "0";
+    }
+    return arrayOut;
+}
+
 string PrintArrayIf(string[] printarray, int Length)
 {
     int count = 2;
@@ -39,18 +61,17 @@ string PrintArrayIf(string[] printarray, int Length)
     return print;
 }
 
-string[] FilterArray(string[] arrayIn, int Length)
-{
-    string[] arrayOut = new string[Length];
-    return arrayOut;
-}
-
 void Main()
 {
     string enter = "array size";
     int size = GetValueNullNatural(enter);
 
     string[] array = new string[size];
+    FillArray(array, size);
+
+    
 
     System.Console.WriteLine(PrintArrayIf(FilterArray(array, size), size));
 }
+
+Main();
