@@ -20,19 +20,37 @@
     return value;
 }
 
-string PrintArray(string[] printarray, int Length)
+string PrintArrayIf(string[] printarray, int Length)
 {
+    int count = 2;
     string print = string.Empty;
     for (int i = 0; i < Length; i++)
     {
-        print += $"{printarray[i]} ";
-        print += System.Environment.NewLine;
+        if (printarray[i] != "0")
+        {
+            print += $"{printarray[i]} ";
+        }
+        if (i == count)
+        {
+            print += System.Environment.NewLine;
+            count += 3;
+        }
     }
     return print;
+}
+
+string[] FilterArray(string[] arrayIn, int Length)
+{
+    string[] arrayOut = new string[Length];
+    return arrayOut;
 }
 
 void Main()
 {
     string enter = "array size";
     int size = GetValueNullNatural(enter);
+
+    string[] array = new string[size];
+
+    System.Console.WriteLine(PrintArrayIf(FilterArray(array, size), size));
 }
